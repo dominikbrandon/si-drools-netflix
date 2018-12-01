@@ -1,6 +1,43 @@
 package si.netflix;
 
+import javax.swing.*;
+import org.kie.api.runtime.*;
+
+global JFrame frame;
+
+function void ask(JFrame frame, KieRuntime krt, Question question) {
+    String[] options = question.getOptions();
+    int answerVal = JOptionPane.showOptionDialog(frame, question.getText(), "", JOptionPane.YES_NO_CANCEL_OPTION,
+            JOptionPane.QUESTION_MESSAGE, null, options, 1);
+    Answer answer = new Answer(question);
+    answer.setChoice(options[answerVal]);
+    krt.insert(answer);
+}
+
+function void showResult(JFrame frame, String movieName) {
+    JOptionPane.showMessageDialog(frame, movieName);
+}
+
+
+
+
+
+
 rule "init"
 then
-    System.out.println("init");
+    ask(frame, kcontext.getKieRuntime(), Question.SI_EASY);
+end
+
+rule "si easy - yes"
+when
+    Answer(question == Question.SI_EASY, choice == Question.SI_EASY.getOptions()[0])
+then
+    showResult(frame, "you're doing it wrong");
+end
+
+rule "si easy - no"
+when
+    Answer(question == Question.SI_EASY, choice == Question.SI_EASY.getOptions()[1])
+then
+    showResult(frame, "good boi");
 end
