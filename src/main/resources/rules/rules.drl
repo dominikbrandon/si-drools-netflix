@@ -1,0 +1,6 @@
+package si.netflix;
+
+rule "init"
+then
+    System.out.println("init");
+end
