@@ -25,19 +25,83 @@ function void showResult(JFrame frame, String movieName) {
 
 rule "init"
 then
-    ask(frame, kcontext.getKieRuntime(), Question.SI_EASY);
+    ask(frame, kcontext.getKieRuntime(), Question.DRAMA_COMEDY);
 end
 
-rule "si easy - yes"
+rule "drama comedy - drama"
 when
-    Answer(question == Question.SI_EASY, choice == Question.SI_EASY.getOptions()[0])
+    Answer(question == Question.DRAMA_COMEDY, choice == Question.DRAMA_COMEDY.getOptions()[0])
 then
-    showResult(frame, "you're doing it wrong");
+   ask(frame, kcontext.getKieRuntime(), Question.SCI_FI);
 end
 
-rule "si easy - no"
+rule "drama comedy - comedy"
 when
-    Answer(question == Question.SI_EASY, choice == Question.SI_EASY.getOptions()[1])
+    Answer(question == Question.DRAMA_COMEDY, choice == Question.DRAMA_COMEDY.getOptions()[1])
 then
-    showResult(frame, "good boi");
+    ask(frame, kcontext.getKieRuntime(), Question.QUES_MORALS);
 end
+
+rule "drama comedy - both"
+when
+    Answer(question == Question.DRAMA_COMEDY, choice == Question.DRAMA_COMEDY.getOptions()[2])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.SMALL_PRISON);
+end
+
+rule "sci fi - yes"
+when
+    Answer(question == Question.SCI_FI, choice == Question.SCI_FI.getOptions()[0])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.CAN_GORE);
+end
+
+rule "sci fi - no"
+when
+    Answer(question == Question.SCI_FI, choice == Question.SCI_FI.getOptions()[1])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.POLITICS);
+end
+
+rule "small prison - small"
+when
+    Answer(question == Question.SMALL_PRISON, choice == Question.SMALL_PRISON.getOptions()[0])
+then
+    showResult(frame, "Gilmore Girls");
+end
+
+rule "small prison - prison"
+when
+    Answer(question == Question.SMALL_PRISON, choice == Question.SMALL_PRISON.getOptions()[1])
+then
+    showResult(frame, "OITNB");
+end
+
+rule "questionable morals - no"
+when
+    Answer(question == Question.QUEST_MORALS, choice == Question.QUEST_MORALS.getOptions()[0])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.STRONG_FEMALE);
+end
+
+rule "questionable morals - yes"
+when
+    Answer(question == Question.QUEST_MORALS, choice == Question.QUEST_MORALS.getOptions()[1])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.FRIEND_DYSF);
+end
+
+rule "friend or dysfunctional - friend"
+when
+    Answer(question == Question.FRIEND_DYSF, choice == Question.FRIEND_DYSF.getOptions()[0])
+then
+    showResult(frame, "It's always sunny in philadelphia");
+end
+
+rule "friend or dysfunctional - dysfunctional"
+when
+    Answer(question == Question.FRIEND_DYSF, choice == Question.FRIEND_DYSF.getOptions()[1])
+then
+    showResult(frame, "Arrested development");
+end
+
