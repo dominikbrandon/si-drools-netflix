@@ -39,7 +39,7 @@ rule "drama comedy - comedy"
 when
     Answer(question == Question.DRAMA_COMEDY, choice == Question.DRAMA_COMEDY.getOptions()[1])
 then
-    ask(frame, kcontext.getKieRuntime(), Question.QUES_MORALS);
+    ask(frame, kcontext.getKieRuntime(), Question.QUEST_MORALS);
 end
 
 rule "drama comedy - both"
