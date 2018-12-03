@@ -105,3 +105,296 @@ then
     showResult(frame, "Arrested development");
 end
 
+rule "strong female - yes"
+when
+    Answer(question == Question.STRONG_FEMALE, choice == Question.STRONG_FEMALE.getOptions()[0])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.SELL_DRUGS);
+end
+
+rule "strong female - no"
+when
+    Answer(question == Question.STRONG_FEMALE, choice == Question.STRONG_FEMALE.getOptions()[1])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.WORK_HUMOR);
+end
+
+rule "can gore - yes"
+when
+    Answer(question == Question.CAN_GORE, choice == Question.CAN_GORE.getOptions()[0])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.ZOMBIES);
+end
+
+rule "can gore - no"
+when
+    Answer(question == Question.CAN_GORE, choice == Question.CAN_GORE.getOptions()[1])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.BRITISH_CHAR);
+end
+
+rule "politics - yes"
+when
+    Answer(question == Question.POLITICS, choice == Question.POLITICS.getOptions()[0])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.NEED_ACTION);
+end
+
+rule "politics - no"
+when
+    Answer(question == Question.POLITICS, choice == Question.POLITICS.getOptions()[1])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.FEEL_CRY);
+end
+
+rule "feel crying - yes"
+when
+    Answer(question == Question.FEEL_CRY, choice == Question.FEEL_CRY.getOptions()[0])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.FOOTBALL);
+end
+
+rule "feel crying - no"
+when
+    Answer(question == Question.FEEL_CRY, choice == Question.FEEL_CRY.getOptions()[1])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.CRIME_SHOWS);
+end
+
+rule "sell drugs - yes"
+when
+    Answer(question == Question.SELL_DRUGS, choice == Question.SELL_DRUGS.getOptions()[0])
+then
+    showResult(frame, "Weeds");
+end
+
+rule "sell drugs - no"
+when
+    Answer(question == Question.SELL_DRUGS, choice == Question.SELL_DRUGS.getOptions()[1])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.TINA_AMY);
+end
+
+rule "british character - no"
+when
+    Answer(question == Question.BRITISH_CHAR, choice == Question.BRITISH_CHAR.getOptions()[0])
+then
+    showResult(frame, "Lost");
+end
+
+rule "british character - yes"
+when
+    Answer(question == Question.BRITISH_CHAR, choice == Question.BRITISH_CHAR.getOptions()[1])
+then
+    showResult(frame, "Dr. Who");
+end
+
+rule "need action - yes"
+when
+    Answer(question == Question.NEED_ACTION, choice == Question.NEED_ACTION.getOptions()[0])
+then
+    showResult(frame, "24");
+end
+
+rule "need action - no"
+when
+    Answer(question == Question.NEED_ACTION, choice == Question.NEED_ACTION.getOptions()[1])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.ROMANCE);
+end
+
+rule "work place humor - no"
+when
+    Answer(question == Question.WORK_HUMOR, choice == Question.WORK_HUMOR.getOptions()[0])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.HIGH_SCHOOL);
+end
+
+rule "work place humor - yes"
+when
+    Answer(question == Question.WORK_HUMOR, choice == Question.WORK_HUMOR.getOptions()[1])
+then
+    showResult(frame, "The Office");
+end
+
+rule "football - yes"
+when
+    Answer(question == Question.FOOTBALL, choice == Question.FOOTBALL.getOptions()[0])
+then
+    showResult(frame, "Friday night lights");
+end
+
+rule "football - no"
+when
+    Answer(question == Question.FOOTBALL, choice == Question.FOOTBALL.getOptions()[1])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.HOSPITALS);
+end
+
+rule "crime shows - yes"
+when
+    Answer(question == Question.CRIME_SHOWS, choice == Question.CRIME_SHOWS.getOptions()[0])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.ROOT_CRIMINAL);
+end
+
+rule "crime shows - no"
+when
+    Answer(question == Question.CRIME_SHOWS, choice == Question.CRIME_SHOWS.getOptions()[1])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.METH);
+end
+
+rule "tina amy - tina"
+when
+    Answer(question == Question.TINA_AMY, choice == Question.TINA_AMY.getOptions()[0])
+then
+    showResult(frame, "30 Rock");
+end
+
+rule "tina amy - amy"
+when
+    Answer(question == Question.TINA_AMY, choice == Question.TINA_AMY.getOptions()[1])
+then
+    showResult(frame, "Parks & Recreation");
+end
+
+rule "high scoolers - no"
+when
+    Answer(question == Question.HIGH_SCHOOL, choice == Question.HIGH_SCHOOL.getOptions()[0])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.BAR_CAFE);
+end
+
+rule "high scoolers - yes"
+when
+    Answer(question == Question.HIGH_SCHOOL, choice == Question.HIGH_SCHOOL.getOptions()[1])
+then
+    showResult(frame, "Freaks & Geeks");
+end
+
+rule "meth - yes"
+when
+    Answer(question == Question.METH, choice == Question.METH.getOptions()[0])
+then
+    showResult(frame, "Breaking Bad");
+end
+
+rule "meth - no"
+when
+    Answer(question == Question.METH, choice == Question.METH.getOptions()[1])
+then
+    showResult(frame, "Mad Men");
+end
+
+rule "root criminals - yes"
+when
+    Answer(question == Question.ROOT_CRIMINAL, choice == Question.ROOT_CRIMINAL.getOptions()[0])
+then
+    showResult(frame, "Dexter");
+end
+
+rule "root criminals - no"
+when
+    Answer(question == Question.ROOT_CRIMINAL, choice == Question.ROOT_CRIMINAL.getOptions()[1])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.FOREN_PSYC);
+end
+
+rule "hospitals - no"
+when
+    Answer(question == Question.HOSPITALS, choice == Question.HOSPITALS.getOptions()[0])
+then
+    showResult(frame, "Parenthood");
+end
+
+rule "hospitals - yes"
+when
+    Answer(question == Question.HOSPITALS, choice == Question.HOSPITALS.getOptions()[1])
+then
+    showResult(frame, "Grey's anathomy");
+end
+
+rule "zombies - yes"
+when
+    Answer(question == Question.ZOMBIES, choice == Question.ZOMBIES.getOptions()[0])
+then
+    showResult(frame, "The Walking Dead");
+end
+
+rule "zombies - no"
+when
+    Answer(question == Question.ZOMBIES, choice == Question.ZOMBIES.getOptions()[1])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.VAMP);
+end
+
+rule "romance - yes"
+when
+    Answer(question == Question.ROMANCE, choice == Question.ROMANCE.getOptions()[0])
+then
+    showResult(frame, "Scandal");
+end
+
+rule "romance - no"
+when
+    Answer(question == Question.ROMANCE, choice == Question.ROMANCE.getOptions()[1])
+then
+    ask(frame, kcontext.getKieRuntime(), Question.OPTI_CYNIC);
+end
+
+rule "opti cynic - opti"
+when
+    Answer(question == Question.OPTI_CYNIC, choice == Question.OPTI_CYNIC.getOptions()[0])
+then
+    showResult(frame, "The west wing");
+end
+
+rule "opti cynic - cynic"
+when
+    Answer(question == Question.OPTI_CYNIC, choice == Question.OPTI_CYNIC.getOptions()[1])
+then
+    showResult(frame, "House of Cards");
+end
+
+rule "vampires - yes"
+when
+    Answer(question == Question.VAMP, choice == Question.VAMP.getOptions()[0])
+then
+    showResult(frame, "The vampire diaries");
+end
+
+rule "vampires - no"
+when
+    Answer(question == Question.VAMP, choice == Question.VAMP.getOptions()[1])
+then
+    showResult(frame, "Supernatural");
+end
+
+rule "foren psyc - foren"
+when
+    Answer(question == Question.FOREN_PSYC, choice == Question.FOREN_PSYC.getOptions()[0])
+then
+    showResult(frame, "CSI Miami");
+end
+
+rule "foren psyc - psyc"
+when
+    Answer(question == Question.FOREN_PSYC, choice == Question.FOREN_PSYC.getOptions()[1])
+then
+    showResult(frame, "Criminal Minds");
+end
+
+rule "bar cafe - bar"
+when
+    Answer(question == Question.BAR_CAFE, choice == Question.BAR_CAFE.getOptions()[0])
+then
+    showResult(frame, "How i met your mother");
+end
+
+rule "bar cafe - cafe"
+when
+    Answer(question == Question.BAR_CAFE, choice == Question.BAR_CAFE.getOptions()[1])
+then
+    showResult(frame, "Friends");
+end
