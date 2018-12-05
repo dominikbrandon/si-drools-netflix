@@ -3,8 +3,48 @@ package si.netflix;
 import javax.swing.*;
 import org.kie.api.runtime.*;
 
+// *************** GLOBALS **********************
 global JFrame frame;
 
+// ************ TYPES DECLARATIONS ***************
+declare enum Question
+    DRAMA_COMEDY("Drama or Comedy", new String[]{"Drama", "Comedy", "A little bit of both"}),
+    SCI_FI("Do you like sci-fi or supernatural shows", new String[]{"Yes", "No"}),
+    QUEST_MORALS("Do you like your character have questionable morals", new String[]{"No", "Yes"}),
+    SMALL_PRISON("Small town or prison", new String[]{"Small Town", "Prison"}),
+    STRONG_FEMALE("Do you like strong female charaters", new String[]{"Yes", "No"}),
+    POLITICS("Politics", new String[]{"Yes", "No"}),
+    CAN_GORE("Can you handle gore?",new String[]{"Yes", "No"}),
+    FRIEND_DYSF("Friend group or dysfunctional family",new String[]{"Friends", "Family"}),
+    BRITISH_CHAR("British charakters?", new String[]{"No", "Yes"}),
+    FEEL_CRY("Feel like crying?", new String[]{"Yes", "No"}),
+    SELL_DRUGS("Do you like them to sell drugs?",new String[]{"Yes","No"}),
+    NEED_ACTION("Need action?", new String[]{"Yes", "No"}),
+    WORK_HUMOR("Work place humor?", new String[]{"No", "Yes"}),
+    FOOTBALL("Do you like football?", new String[]{"Yes", "No"}),
+    ROMANCE("Scandalous romance?", new String[]{"Yes", "No"}),
+    CRIME_SHOWS("Do you like crime shows?", new String[]{"Yes", "No"}),
+    HIGH_SCHOOL("Want to see James Franco & Seth Rogen as high schoolers?", new String[]{"No", "Yes"}),
+    ZOMBIES("Do you like zombies?", new String[]{"Yes", "No"}),
+    HOSPITALS("Hospitals?", new String[]{"No", "Yes"}),
+    TINA_AMY("Tina Fey or Amy Poehler?", new String[]{"Tina", "Amy"}),
+    ROOT_CRIMINAL("Do you root for the criminals?", new String[]{"Yes", "No"}),
+    METH("Meth?", new String[]{"Yes", "No"}),
+    OPTI_CYNIC("Optimistic or cynical?", new String[]{"Optimistic", "Cynical"}),
+    VAMP("Vampires?", new String[]{"Yes", "No"}),
+    BAR_CAFE("Do you want your NYC friends to hang out at a Bar or Cafe?", new String[]{"Bar", "Cafe"}),
+    FOREN_PSYC("Forensics or psychology?", new String[]{"Forensics", "Psychology"});
+
+    text : String
+    options : String[]
+end
+
+declare Answer
+    question : Question @key
+    choice : String
+end
+
+// ********************** FUNCTIONS *********************
 function void ask(JFrame frame, KieRuntime krt, Question question) {
     String[] options = question.getOptions();
     int answerVal = JOptionPane.showOptionDialog(frame, question.getText(), "", JOptionPane.YES_NO_CANCEL_OPTION,
@@ -18,11 +58,7 @@ function void showResult(JFrame frame, String movieName) {
     JOptionPane.showMessageDialog(frame, movieName);
 }
 
-
-
-
-
-
+// *********************** RULES ***********************
 rule "init"
 then
     ask(frame, kcontext.getKieRuntime(), Question.DRAMA_COMEDY);
