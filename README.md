@@ -1,5 +1,9 @@
 # How to
 
-Build: `mvn clean install`
+Build: `./mvnw clean install`
 
-Run (need to build first): `mvn exec:java`
+Run (need to build first): `./mvnw exec:java`
+
+Windows: `./mvnw.cmd` instead
+
+Erase maven stuff: delete `~/.m2`
